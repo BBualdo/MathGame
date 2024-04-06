@@ -10,9 +10,8 @@ namespace MathGame.BBualdo.Models
     public int Score { get; set; } = 0;
     public int NumberOfQuestions { get; set; }
 
-    public Game(GameTypes gameType, DifficultyLevels difficulty, int numberOfQuestions)
+    public Game(DifficultyLevels difficulty, int numberOfQuestions)
     {
-      GameType = gameType;
       Date = DateTime.Now;
       DifficultyLevel = difficulty;
       NumberOfQuestions = numberOfQuestions;

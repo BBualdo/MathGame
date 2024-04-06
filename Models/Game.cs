@@ -21,10 +21,12 @@ namespace MathGame.BBualdo.Models
     {
       Console.Clear();
       GameConsole.ShowTitle();
-
-      IsGameOn = true;
       GameConsole.ShowMessage(@$"{Type} Game
 --------------------");
+
+      GameTimer gameTimer = new GameTimer();
+      gameTimer.EnableTimer();
+      IsGameOn = true;
 
       char? currentOperator = OperatorChecker.CheckOperators(Type);
 
@@ -101,7 +103,8 @@ namespace MathGame.BBualdo.Models
         }
       }
 
-      GameConsole.ShowMessage($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions.");
+      gameTimer.DisableTimer();
+      GameConsole.ShowMessage($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions. Time elapsed: {gameTimer.timeInSeconds}s");
       // Add game to games history
       GameConsole.ShowMessage("Please enter any key to go back to main menu.");
       Console.ReadKey();

@@ -1,7 +1,6 @@
-﻿namespace MathGame.BBualdo.enums
+﻿namespace MathGame.BBualdo.enums;
+
+internal enum GameTypes
 {
-  internal enum GameTypes
-  {
-    Addition, Subtraction, Multiplication, Division, Random
-  }
+  Addition, Subtraction, Multiplication, Division, Random
 }

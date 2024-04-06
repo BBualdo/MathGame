@@ -18,7 +18,7 @@ namespace MathGame.BBualdo.Models
       Date = DateTime.Now;
     }
 
-    public void Run()
+    public void Run(int maxValue)
     {
       Console.Clear();
       GameConsole.ShowTitle();
@@ -43,15 +43,22 @@ namespace MathGame.BBualdo.Models
 
         if (currentOperator == '/')
         {
-          int[] nums = DivisionNumbers.GetDivisionNumbers(DifficultyLevel);
+          int[] nums = DivisionNumbers.GetDivisionNumbers(maxValue);
           num1 = nums[0];
           num2 = nums[1];
         }
         else
         {
           Random random = new Random();
-          num1 = random.Next(1, 10);
-          num2 = random.Next(1, 10);
+
+          // Decreased maxValue by one decimal to avoid huge numbers in * (did the same for /)
+          if (currentOperator == '*')
+          {
+            maxValue /= 10;
+          }
+
+          num1 = random.Next(1, maxValue);
+          num2 = random.Next(1, maxValue);
         }
 
         GameConsole.ShowMessage($"{num1} {currentOperator} {num2} ?");

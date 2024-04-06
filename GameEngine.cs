@@ -7,6 +7,7 @@ namespace MathGame.BBualdo
   {
     public Game CurrentGame { get; set; } = new Game();
     public GameHistory GamesHistory { get; set; } = new GameHistory();
+    public int MaxValue { get; set; }
 
     public void SelectMode()
     {
@@ -74,11 +75,17 @@ namespace MathGame.BBualdo
       switch (userInput.Trim().ToLower())
       {
         case "e":
-          CurrentGame.DifficultyLevel = DifficultyLevels.Easy; break;
+          CurrentGame.DifficultyLevel = DifficultyLevels.Easy;
+          MaxValue = 10;
+          break;
         case "m":
-          CurrentGame.DifficultyLevel = DifficultyLevels.Medium; break;
+          CurrentGame.DifficultyLevel = DifficultyLevels.Medium;
+          MaxValue = 100;
+          break;
         case "h":
-          CurrentGame.DifficultyLevel = DifficultyLevels.Hard; break;
+          CurrentGame.DifficultyLevel = DifficultyLevels.Hard;
+          MaxValue = 1000;
+          break;
         default:
           GameConsole.ShowError("Wrong input!");
           Environment.Exit(1);

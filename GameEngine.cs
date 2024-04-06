@@ -25,19 +25,19 @@ namespace MathGame.BBualdo
           // View History
           break;
         case "a":
-          CurrentGame.GameType = GameTypes.Addition;
+          CurrentGame.Type = GameTypes.Addition;
           break;
         case "s":
-          CurrentGame.GameType = GameTypes.Subtraction;
+          CurrentGame.Type = GameTypes.Subtraction;
           break;
         case "m":
-          CurrentGame.GameType = GameTypes.Multiplication;
+          CurrentGame.Type = GameTypes.Multiplication;
           break;
         case "d":
-          CurrentGame.GameType = GameTypes.Division;
+          CurrentGame.Type = GameTypes.Division;
           break;
         case "r":
-          CurrentGame.GameType = GameTypes.Random;
+          CurrentGame.Type = GameTypes.Random;
           break;
         case "q":
           GameConsole.ShowMessage("Goodbye!");
@@ -52,6 +52,9 @@ namespace MathGame.BBualdo
 
     public void SelectDifficulty()
     {
+      Console.Clear();
+      GameConsole.ShowTitle();
+
       GameConsole.ShowDifficulties();
 
       string? userInput = Console.ReadLine();
@@ -79,6 +82,9 @@ namespace MathGame.BBualdo
 
     public void SelectNumberOfQuestions()
     {
+      Console.Clear();
+      GameConsole.ShowTitle();
+
       GameConsole.ShowMessage("How much questions you want to be asked?");
 
       int numberOfQuestions;
@@ -95,6 +101,7 @@ namespace MathGame.BBualdo
       if (numberOfQuestions < 1 || numberOfQuestions > 10)
       {
         GameConsole.ShowError("Number of questions must be between 1 and 10");
+        Environment.Exit(1);
       }
 
       CurrentGame.NumberOfQuestions = numberOfQuestions;

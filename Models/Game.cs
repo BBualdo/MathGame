@@ -5,11 +5,12 @@ namespace MathGame.BBualdo.Models
 {
   internal class Game
   {
-    public GameTypes GameType { get; set; }
+    public GameTypes Type { get; set; }
     public DateTime Date { get; set; }
     public DifficultyLevels DifficultyLevel { get; set; }
     public int Score { get; set; } = 0;
     public int NumberOfQuestions { get; set; }
+    public bool IsGameOn { get; set; } = false;
 
     public Game()
     {
@@ -18,14 +19,21 @@ namespace MathGame.BBualdo.Models
 
     public void Run()
     {
-      char? currentOperator = OperatorChecker.CheckOperators(GameType);
+      Console.Clear();
+      GameConsole.ShowTitle();
+
+      IsGameOn = true;
+      GameConsole.ShowMessage(@$"{Type} Game
+--------------------");
+
+      char? currentOperator = OperatorChecker.CheckOperators(Type);
 
       for (int i = 0; i < NumberOfQuestions; i++)
       {
-        if (GameType == GameTypes.Random)
+        if (Type == GameTypes.Random)
         {
           // Generating new operator for each question
-          currentOperator = OperatorChecker.CheckOperators(GameType);
+          currentOperator = OperatorChecker.CheckOperators(Type);
         }
 
         int num1;
@@ -95,6 +103,9 @@ namespace MathGame.BBualdo.Models
 
       GameConsole.ShowMessage($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions.");
       // Add game to games history
+      GameConsole.ShowMessage("Please enter any key to go back to main menu.");
+      Console.ReadKey();
+      IsGameOn = false;
     }
   }
 }

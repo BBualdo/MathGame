@@ -1,9 +1,13 @@
 ﻿using MathGame.BBualdo;
 
-GameConsole.ShowTitle();
-
 GameEngine gameEngine = new GameEngine();
 
-gameEngine.SelectMode();
-gameEngine.SelectDifficulty();
-gameEngine.SelectNumberOfQuestions();
+do
+{
+  Console.Clear();
+  GameConsole.ShowTitle();
+  gameEngine.SelectMode();
+  gameEngine.SelectDifficulty();
+  gameEngine.SelectNumberOfQuestions();
+  gameEngine.CurrentGame.Run();
+} while (!gameEngine.CurrentGame.IsGameOn);

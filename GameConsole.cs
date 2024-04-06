@@ -5,11 +5,11 @@
     public static void ShowTitle()
     {
       Console.WriteLine("------ Math Game ------");
-      Console.WriteLine("");
     }
 
     public static void ShowMenu()
     {
+      Console.WriteLine("");
       Console.WriteLine(@"Welcome! Select one of the options from below:
 
         V - View History
@@ -24,6 +24,7 @@
 
     public static void ShowDifficulties()
     {
+      Console.WriteLine("");
       Console.WriteLine(@"Select difficulty level:
 
         E - Easy,
@@ -34,12 +35,14 @@
 
     public static void ShowMessage(string message)
     {
+      Console.WriteLine("");
       Console.WriteLine(message);
       Console.WriteLine("");
     }
 
     public static void ShowError(string message)
     {
+      Console.WriteLine("");
       Console.WriteLine(message);
       Console.WriteLine("");
     }

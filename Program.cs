@@ -1,13 +1,19 @@
 ﻿using MathGame.BBualdo;
+using MathGame.BBualdo.Models;
 
 GameEngine gameEngine = new GameEngine();
 
 do
 {
+  gameEngine.CurrentGame = new Game();
   Console.Clear();
   GameConsole.ShowTitle();
   gameEngine.SelectMode();
-  gameEngine.SelectDifficulty();
-  gameEngine.SelectNumberOfQuestions();
-  gameEngine.CurrentGame.Run();
+  if (gameEngine.CurrentGame.IsGameOn)
+  {
+    gameEngine.SelectDifficulty();
+    gameEngine.SelectNumberOfQuestions();
+    gameEngine.CurrentGame.Run();
+    gameEngine.GamesHistory.gamesList.Add(gameEngine.CurrentGame);
+  }
 } while (!gameEngine.CurrentGame.IsGameOn);

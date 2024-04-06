@@ -5,7 +5,7 @@ namespace MathGame.BBualdo.Helpers;
 internal class GameTimer
 {
   public System.Timers.Timer Timer { get; private set; } = new System.Timers.Timer(1000);
-  public int timeInSeconds { get; private set; }
+  public int TimeInSeconds { get; private set; }
 
   public GameTimer()
   {
@@ -24,7 +24,7 @@ internal class GameTimer
 
   private void Tick(object? sender, ElapsedEventArgs e)
   {
-    timeInSeconds++;
+    TimeInSeconds++;
   }
 }
 

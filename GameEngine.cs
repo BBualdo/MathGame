@@ -6,6 +6,7 @@ namespace MathGame.BBualdo
   internal class GameEngine
   {
     public Game CurrentGame { get; set; } = new Game();
+    public GameHistory GamesHistory { get; set; } = new GameHistory();
 
     public void SelectMode()
     {
@@ -22,22 +23,27 @@ namespace MathGame.BBualdo
       switch (userInput.Trim().ToLower())
       {
         case "v":
-          // View History
+          GamesHistory.GetGamesHistory();
           break;
         case "a":
           CurrentGame.Type = GameTypes.Addition;
+          CurrentGame.IsGameOn = true;
           break;
         case "s":
           CurrentGame.Type = GameTypes.Subtraction;
+          CurrentGame.IsGameOn = true;
           break;
         case "m":
           CurrentGame.Type = GameTypes.Multiplication;
+          CurrentGame.IsGameOn = true;
           break;
         case "d":
           CurrentGame.Type = GameTypes.Division;
+          CurrentGame.IsGameOn = true;
           break;
         case "r":
           CurrentGame.Type = GameTypes.Random;
+          CurrentGame.IsGameOn = true;
           break;
         case "q":
           GameConsole.ShowMessage("Goodbye!");

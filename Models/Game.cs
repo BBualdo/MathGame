@@ -10,6 +10,7 @@ namespace MathGame.BBualdo.Models
     public DifficultyLevels DifficultyLevel { get; set; }
     public int Score { get; set; } = 0;
     public int NumberOfQuestions { get; set; }
+    public int TimeInSeconds { get; set; }
     public bool IsGameOn { get; set; } = false;
 
     public Game()
@@ -26,7 +27,6 @@ namespace MathGame.BBualdo.Models
 
       GameTimer gameTimer = new GameTimer();
       gameTimer.EnableTimer();
-      IsGameOn = true;
 
       char? currentOperator = OperatorChecker.CheckOperators(Type);
 
@@ -104,9 +104,9 @@ namespace MathGame.BBualdo.Models
       }
 
       gameTimer.DisableTimer();
-      GameConsole.ShowMessage($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions. Time elapsed: {gameTimer.timeInSeconds}s");
-      // Add game to games history
-      GameConsole.ShowMessage("Please enter any key to go back to main menu.");
+      TimeInSeconds = gameTimer.TimeInSeconds;
+      GameConsole.ShowMessage($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions. Time elapsed: {TimeInSeconds}s");
+      GameConsole.ShowMessage("Please press any key to go back to main menu.");
       Console.ReadKey();
       IsGameOn = false;
     }

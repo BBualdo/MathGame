@@ -1,4 +1,5 @@
 ﻿using MathGame.BBualdo.enums;
+using MathGame.BBualdo.Helpers;
 
 namespace MathGame.BBualdo.Models
 {
@@ -29,9 +30,21 @@ namespace MathGame.BBualdo.Models
           currentOperator = GameEngine.CheckOperators(GameType);
         }
 
-        Random random = new Random();
-        int num1 = random.Next(1, 10);
-        int num2 = random.Next(1, 10);
+        int num1;
+        int num2;
+
+        if (currentOperator == '/')
+        {
+          int[] nums = DivisionNumbers.GetDivisionNumbers(DifficultyLevels.Easy);
+          num1 = nums[0];
+          num2 = nums[1];
+        }
+        else
+        {
+          Random random = new Random();
+          num1 = random.Next(1, 10);
+          num2 = random.Next(1, 10);
+        }
 
         Console.WriteLine($"{num1} {currentOperator} {num2} ?");
 

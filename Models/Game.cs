@@ -11,23 +11,21 @@ namespace MathGame.BBualdo.Models
     public int Score { get; set; } = 0;
     public int NumberOfQuestions { get; set; }
 
-    public Game(DifficultyLevels difficulty, int numberOfQuestions)
+    public Game()
     {
       Date = DateTime.Now;
-      DifficultyLevel = difficulty;
-      NumberOfQuestions = numberOfQuestions;
     }
 
     public void Run()
     {
-      char? currentOperator = GameEngine.CheckOperators(GameType);
+      char? currentOperator = OperatorChecker.CheckOperators(GameType);
 
       for (int i = 0; i < NumberOfQuestions; i++)
       {
         if (GameType == GameTypes.Random)
         {
           // Generating new operator for each question
-          currentOperator = GameEngine.CheckOperators(GameType);
+          currentOperator = OperatorChecker.CheckOperators(GameType);
         }
 
         int num1;
@@ -35,7 +33,7 @@ namespace MathGame.BBualdo.Models
 
         if (currentOperator == '/')
         {
-          int[] nums = DivisionNumbers.GetDivisionNumbers(DifficultyLevels.Easy);
+          int[] nums = DivisionNumbers.GetDivisionNumbers(DifficultyLevel);
           num1 = nums[0];
           num2 = nums[1];
         }
@@ -46,13 +44,14 @@ namespace MathGame.BBualdo.Models
           num2 = random.Next(1, 10);
         }
 
-        Console.WriteLine($"{num1} {currentOperator} {num2} ?");
+        GameConsole.ShowMessage($"{num1} {currentOperator} {num2} ?");
 
         string? userAnswer = Console.ReadLine();
 
         if (string.IsNullOrEmpty(userAnswer))
         {
-          Console.WriteLine("Wrong answer!");
+          GameConsole.ShowError("Wrong answer!");
+          continue;
         }
 
         bool isCorrect = false;
@@ -85,16 +84,16 @@ namespace MathGame.BBualdo.Models
 
         if (isCorrect)
         {
-          Console.WriteLine("Correct answer!");
+          GameConsole.ShowMessage("Correct answer!");
           Score++;
         }
         else
         {
-          Console.WriteLine("Wrong answer!");
+          GameConsole.ShowError("Wrong answer!");
         }
       }
 
-      Console.WriteLine($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions.");
+      GameConsole.ShowMessage($"Game over! You answered correctly for {Score} out of {NumberOfQuestions} questions.");
       // Add game to games history
     }
   }

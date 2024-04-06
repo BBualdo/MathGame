@@ -5,6 +5,7 @@
     public static void ShowTitle()
     {
       Console.WriteLine("------ Math Game ------");
+      Console.WriteLine("");
     }
 
     public static void ShowMenu()
@@ -16,14 +17,31 @@
         S - Play Subtraction
         M - Play Multiplication
         D - Play Division
-        R - Plan with Random Operations
+        R - Play with Random Operations
         Q - Quit Game
 ");
+    }
+
+    public static void ShowDifficulties()
+    {
+      Console.WriteLine(@"Select difficulty level:
+
+        E - Easy,
+        M - Medium,
+        H - Hard
+");
+    }
+
+    public static void ShowMessage(string message)
+    {
+      Console.WriteLine(message);
+      Console.WriteLine("");
     }
 
     public static void ShowError(string message)
     {
       Console.WriteLine(message);
+      Console.WriteLine("");
     }
   }
 }

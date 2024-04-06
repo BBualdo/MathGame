@@ -12,12 +12,10 @@ namespace MathGame.BBualdo.Helpers
 
       while (num1 % num2 != 0)
       {
-        num1 = random.Next(1, 10);
         num2 = random.Next(1, 10);
       }
 
       return [num1, num2];
-
     }
   }
 }
